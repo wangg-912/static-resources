@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <link href="/src/styles/dynamicform/bootstrap-combined.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.bootcss.com/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+    <link href="/src/styles/dynamicform/layoutit.css" rel="stylesheet">
+    <link href="/src/styles/icon_extend.css" rel="stylesheet">
+    <script type="text/javascript" src="/src/bower_components/require/require.min.js"></script>
+    <script type="text/javascript" src="/src/scripts/config/require.config.js"></script>
+    <style>
+        html,body{
+            height: 100%;
+        }
+        /*滚动条样式，仅支持webkit内核浏览器*/
+        *::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+
+        *::-webkit-scrollbar-button {
+            width: 0;
+            height: 0;
+        }
+
+        *::-webkit-scrollbar-track {
+            background: #f7f7f7;
+        }
+
+        *::-webkit-scrollbar-thumb {
+            background: #cfcfd1;
+        }
+
+        *::-webkit-scrollbar-track,
+        *::-webkit-scrollbar-thumb {
+            border-radius: 4px;
+        }
+
+        *::-webkit-scrollbar-corner,
+        *::-webkit-scrollbar-button {
+            background: #fff;
+        }
+        .col-xs-1, .col-sm-1, .col-md-1, .col-lg-1, .col-xs-2, .col-sm-2, .col-md-2, .col-lg-2, .col-xs-3, .col-sm-3, .col-md-3, .col-lg-3, .col-xs-4, .col-sm-4, .col-md-4, .col-lg-4, .col-xs-5, .col-sm-5, .col-md-5, .col-lg-5, .col-xs-6, .col-sm-6, .col-md-6, .col-lg-6, .col-xs-7, .col-sm-7, .col-md-7, .col-lg-7, .col-xs-8, .col-sm-8, .col-md-8, .col-lg-8, .col-xs-9, .col-sm-9, .col-md-9, .col-lg-9, .col-xs-10, .col-sm-10, .col-md-10, .col-lg-10, .col-xs-11, .col-sm-11, .col-md-11, .col-lg-11, .col-xs-12, .col-sm-12, .col-md-12, .col-lg-12{
+            padding-left: 4px!important;
+            padding-right: 4px!important;
+        }
+        @media (min-width: 992px) {
+            .col-md-1, .col-md-2, .col-md-3, .col-md-4, .col-md-5, .col-md-6, .col-md-7, .col-md-8, .col-md-9, .col-md-10, .col-md-11, .col-md-12 {
+                float: left;
+            }
+            .col-md-12 {
+                width: 100%;
+            }
+            .col-md-11 {
+                width: 89.66666667%!important;
+            }
+            .col-md-9 {
+                width: 72%!important;
+            }
+            .col-md-3 {
+                width: 25%!important;
+            }
+            .col-md-2 {
+                width: 17.66666667%!important;
+            }
+            .col-md-1 {
+                width: 10.33333333%!important;
+            }
+        }
+        @media (min-width: 1200px) {
+            .col-lg-1, .col-lg-2, .col-lg-3, .col-lg-4, .col-lg-5, .col-lg-6, .col-lg-7, .col-lg-8, .col-lg-9, .col-lg-10, .col-lg-11, .col-lg-12 {
+                float: left;
+            }
+            .col-lg-12 {
+                width: 100%;
+            }
+            .col-lg-11 {
+                width: 89.66666667%!important;
+            }
+            .col-lg-9 {
+                width: 72%!important;
+            }
+            .col-lg-3 {
+                width: 25%!important;
+            }
+            .col-lg-2 {
+                width: 17.66666667%!important;
+            }
+            .col-lg-1 {
+                width: 10.33333333%!important;
+            }
+        }
+        .label{
+            padding: 0.2em 0.2em!important;
+        }
+    </style>
+</head>
+<body style="min-height:100%; cursor: auto;" class="edit">
+<div class="row" style="height: 40px;margin: 0;">
+    <button class="btn btn-default btn-primary" id="preview">
+        <i class="icon-eye-open "></i>预览自定义表单
+    </button>
+    <!--<button class="btn btn-default btn-primary" role="button" id="saveHtml">
+        <i class="icon-share "></i>保存自定义表单
+    </button>-->
+    <button class="btn btn-default btn-primary" href="#clear" id="clear">
+        <i class="icon-trash "></i>清空自定义表单
+    </button>
+</div>
+<div class="container-fluid" style="border-top:1px solid #ececec; height: calc(100% - 40px); overflow: auto">
+    <div class="col-lg-1 col-md-1 col-ms-1">
+        <div class="sidebar-nav">
+            <ul class="nav nav-list accordion-group">
+                <li class="nav-header">
+                    <div class="pull-right popover-info">
+                        <i class="icon-question-sign "></i>
+                        <div class="popover fade right">
+                            <div class="arrow"></div>
+                            <h3 class="popover-title">功能</h3>
+                            <div class="popover-content">在这里设置你的栅格布局, 栅格总数默认为12, 用空格分割每列的栅格值.</div>
+                        </div>
+                    </div>
+                    <i class="icon-plus "></i> 布局设置
+                </li>
+                <li style="display: list-item;" class="rows" id="estRows">
+                    <div class="lyrow ui-draggable">
+                        <a href="#close" class="remove label label-important">
+                            <i class="icon-remove "></i>删除</a>
+                        <span class="drag label"><i class="icon-move"></i></span>
+                        <div class="preview">一列布局</div>
+                        <div class="view view-column" data-type="column">
+                            <div class="row">
+                                <div class="col-lg-12 col-md-12 col-sm-12 column"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="lyrow ui-draggable">
+                        <a href="#close" class="remove label label-important">
+                            <i class="icon-remove "></i>删除</a>
+                        <span class="drag label">
+                                    <i class="icon-move"></i></span>
+                        <div class="preview">二列布局</div>
+                        <div class="view view-column" data-type="column">
+                            <div class="row">
+                                <div class="col-lg-6 col-md-6 col-sm-6 column"></div>
+                                <div class="col-lg-6 col-md-6 col-sm-6 column"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="lyrow ui-draggable">
+                        <a href="#close" class="remove label label-important">
+                            <i class="icon-remove "></i>删除</a>
+                        <span class="drag label">
+                                    <i class="icon-move"></i></span>
+                        <div class="preview">三列布局</div>
+                        <div class="view view-column" data-type="column">
+                            <div class="row">
+                                <div class="col-lg-4 col-md-4 col-sm-4 column"></div>
+                                <div class="col-lg-4 col-md-4 col-sm-4 column"></div>
+                                <div class="col-lg-4 col-md-4 col-sm-4 column"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="lyrow ui-draggable">
+                        <a href="#close" class="remove label label-important">
+                            <i class="icon-remove "></i>删除</a>
+                        <span class="drag label">
+                                    <i class="icon-move"></i></span>
+                        <div class="preview">四列布局</div>
+                        <div class="view view-column" data-type="column">
+                            <div class="row">
+                                <div class="col-lg-3 col-md-3 col-sm-3 column"></div>
+                                <div class="col-lg-3 col-md-3 col-sm-3 column"></div>
+                                <div class="col-lg-3 col-md-3 col-sm-3 column"></div>
+                                <div class="col-lg-3 col-md-3 col-sm-3 column"></div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+            <ul class="nav nav-list accordion-group">
+                <li class="nav-header">
+                    <i class="icon-plus "></i> 表单组件
+                    <div class="pull-right popover-info">
+                        <i class="icon-question-sign "></i>
+                        <div class="popover fade right">
+                            <div class="arrow"></div>
+                            <h3 class="popover-title">帮助</h3>
+                            <div class="popover-content">这里提供了一系列基本元素样式，你可以通过区块右上角的编辑按钮修改样式设置。
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li style="display: list-item;" class="boxes" id="elmBase">
+                    <!-- 普通输入框 -->
+                    <div class="box box-element ui-draggable">
+                        <a href="#close" class="remove label label-important">
+                            <i class="icon-remove "></i>删除</a>
+                        <span class="drag label"><i class="icon-move"></i></span>
+                        <div class="preview">普通输入框</div>
+                        <div class="view view-form-ele form-inline" data-type="input">
+                            <span><label>标签名:</label><input class="form-control view-form-control" type="text" autocomplete="off" placeholder="普通输入框" disabled></span>
+                        </div>
+                    </div>
+
+                    <!-- 数字输入框 -->
+                    <div class="box box-element ui-draggable">
+                        <a href="#close" class="remove label label-important">
+                            <i class="icon-remove "></i>删除</a>
+                        <span class="drag label">
+                                    <i class="icon-move"></i></span>
+                        <div class="preview">数字输入框</div>
+                        <div class="view view-form-ele form-inline" data-type="number">
+                            <span><label>标签名:</label><input class="form-control view-form-control" type="number" placeholder="数字输入框" disabled></span>
+                        </div>
+                    </div>
+                    <!-- 日期输入框 -->
+                    <div class="box box-element ui-draggable">
+                        <a href="#close" class="remove label label-important">
+                            <i class="icon-remove "></i>删除</a>
+                        <span class="drag label"><i class="icon-move"></i></span>
+                        <div class="preview">日期控件</div>
+                        <div class="view view-form-ele form-inline" data-type="date">
+                            <span><label>标签名:</label><input class="form-control view-form-control" type="date" placeholder="YYYY-mm-dd" disabled></span>
+                        </div>
+                    </div>
+                    <!-- 日期时间输入框 -->
+                    <div class="box box-element ui-draggable">
+                        <a href="#close" class="remove label label-important">
+                            <i class="icon-remove "></i>删除</a>
+                        <span class="drag label"><i class="icon-move"></i></span>
+                        <div class="preview">日期时间控件</div>
+                        <div class="view view-form-ele form-inline" data-type="datetime">
+                            <span><label>标签名:</label><input class="form-control view-form-control" type="datetime" placeholder="YYYY-mm-dd HH:mm:ss" disabled></span>
+                        </div>
+                    </div>
+                    <!-- 时间输入框 -->
+                    <div class="box box-element ui-draggable">
+                        <a href="#close" class="remove label label-important">
+                            <i class="icon-remove "></i>删除</a>
+                        <span class="drag label"><i class="icon-move"></i></span>
+                        <div class="preview">时间控件</div>
+                        <div class="view view-form-ele form-inline" data-type="time">
+                            <span><label>标签名:</label><input class="form-control view-form-control" type="time" placeholder="HH:mm:ss" disabled></span>
+                        </div>
+                    </div>
+                    <!-- 下拉框 -->
+                    <div class="box box-element ui-draggable">
+                        <a href="#close" class="remove label label-important">
+                            <i class="icon-remove "></i>删除</a>
+                        <span class="drag label"><i class="icon-move"></i></span>
+                        <div class="preview">下拉框</div>
+                        <div class="view view-form-ele form-inline" data-type="select">
+                            <span><label>标签名:</label><select class="form-control view-form-control" disabled><option value="" selected>下拉框</option></select></span>
+                        </div>
+                    </div>
+                    <!-- 下拉框 -->
+                    <div class="box box-element ui-draggable">
+                        <a href="#close" class="remove label label-important">
+                            <i class="icon-remove "></i>删除</a>
+                        <span class="drag label"><i class="icon-move"></i></span>
+                        <div class="preview">下拉树</div>
+                        <div class="view view-form-ele form-inline" data-type="selecttree">
+                            <span><label>标签名:</label><select class="form-control view-form-control" disabled><option value="" selected>下拉树</option></select></span>
+                        </div>
+                    </div>
+                    <!-- 多行输入框 -->
+                    <div class="box box-element ui-draggable">
+                        <a href="#close" class="remove label label-important">
+                            <i class="icon-remove "></i>删除</a>
+                        <span class="drag label"><i class="icon-move"></i></span>
+                        <div class="preview">多行输入框</div>
+                        <div class="view view-form-ele form-inline" data-type="textarea">
+                            <span><label>标签名:</label><input class="form-control view-form-control" type="text" autocomplete="off" disabled></span>
+                        </div>
+                    </div>
+                    <!-- 富文本编辑器 -->
+                    <div class="box box-element ui-draggable">
+                        <a href="#close" class="remove label label-important">
+                            <i class="icon-remove "></i>删除</a>
+                        <span class="drag label"><i class="icon-move"></i></span>
+                        <div class="preview">富文本编辑器</div>
+                        <div class="view view-form-ele form-inline" data-type="editor">
+                            <span><label>标签名:</label><input class="form-control view-form-control" type="text" autocomplete="off" disabled></span>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="col-lg-11 col-md-11 col-ms-11" id="est_box">
+        <div class="est-container ty-est ui-sortable" id="est_container" style="min-height: 430px;">
+
+        </div>
+    </div>
+    <div id="attrs_box" class="col-lg-2 col-md-2 col-ms-2" style="border-left:1px solid #ececec; height: 100%; display: none">
+        <!--<div class="attribute-title" style="height: 40px; line-height: 40px; font-weight: bold;border-botton:1px solid #ececec;">
+            表单属性设置
+        </div>-->
+        <div class="attribute-container">
+            <form id="base_attributes">
+                <fieldset>
+                    <legend style="font-weight: 600; font-size: 14px;line-height: 30px;">基础属性</legend>
+                    <table cellpadding="0" cellspacing="0" border="0">
+                        <tr style="display: none">
+                            <td><input type="text" autocomplete="off" name="attributeType" class="form-control"></td>
+                            <td><input type="text" autocomplete="off" name="attributeGuid" class="form-control"></td>
+                        </tr>
+                        <tr>
+                            <td><label class="ty-label"><span class="require-label">*</span>标签名:</label></td>
+                            <td><input type="text" autocomplete="off" name="attributeName" placeholder="请输入标签名" class="form-control input-require" required></td>
+                        </tr>
+                        <tr>
+                            <td><label class="ty-label"><span class="require-label">*</span>元素ID:</label></td>
+                            <td><input type="text" autocomplete="off" name="attributeId" placeholder="请输入元素ID" class="form-control input-require" required></td>
+                        </tr>
+                        <tr>
+                            <td><label class="ty-label"><span class="require-label">*</span>是否必填:</label></td>
+                            <td>
+                                <div>
+                                    <span class="attr-chioce"><input type="radio" name ="attributeIsRequired" id="attibuteRequired" checked value="1"><label for="attibuteRequired">是</label></span>
+                                    <span class="attr-chioce"><input type="radio" name ="attributeIsRequired" id="attibuteUnrequired" value="0"><label for="attibuteUnrequired">否</label></span>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><label class="ty-label"><span class="require-label">*</span>读写权限:</label></td>
+                            <td>
+                                <div>
+                                    <span class="attr-chioce"><input type="radio" name ="attributeIsWrite" id="attributeReadyOnly" value="0"><label for="attributeReadyOnly">只读</label></span>
+                                    <span class="attr-chioce"><input type="radio" name ="attributeIsWrite" id="attributeReadyWrite" checked value="1"><label for="attributeReadyWrite">读写</label></span>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><label class="ty-label"><span class="require-label">*</span>是否显示:</label></td>
+                            <td>
+                                <div>
+                                    <span class="attr-chioce"><input type="radio" name ="attributeIsView" id="attributeView" value="1" checked><label for="attributeView">是</label></span>
+                                    <span class="attr-chioce"><input type="radio" name ="attributeIsView" id="attributeUnview" value="0"><label for="attributeUnview">否</label></span>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><label class="ty-label"><span class="require-label">*</span>排序:</label></td>
+                            <td><input type="number" name="attributeNumber" placeholder="请输入排序" class="form-control input-require" required></td>
+                        </tr>
+                        <tr>
+                            <td><label class="ty-label"><span class="require-label">&nbsp;</span>校验规则:</label></td>
+                            <td><input type="text" autocomplete="off" name="attributeRule" placeholder="请输入校验规则" class="form-control"></td>
+                        </tr>
+                        <!-- <tr>
+                             <td><label class="ty-label"><span class="require-label">*</span>是否导出:</label></td>
+                             <td>
+                                 <div>
+                                     <span class="attr-chioce"><input type="radio" name ="attributeIsExport" id="attibuteExprot" value="1"><label for="attibuteExprot">是</label></span>
+                                     <span class="attr-chioce"><input type="radio" name ="attributeIsExport" id="attibuteUnexport" value="0" checked><label for="attibuteUnexport">否</label></span>
+                                 </div>
+                             </td>
+                         </tr>
+                         <tr>
+                             <td><label class="ty-label"><span class="require-label">*</span>查询条件:</label></td>
+                             <td>
+                                 <div>
+                                     <span class="attr-chioce"><input type="radio" name ="attributeIsSearch" id="attibuteSearch" value="1"><label for="attibuteSearch">是</label></span>
+                                     <span class="attr-chioce"><input type="radio" name ="attributeIsSearch" id="attibuteUnsearch" value="0" checked><label for="attibuteUnsearch">否</label></span>
+                                 </div>
+                             </td>
+                         </tr>-->
+                    </table>
+                </fieldset>
+                <fieldset id="extend_attributes" style="display: none">
+                    <legend style="font-weight: 600; font-size: 14px; line-height: 30px;">扩展属性</legend>
+                    <!--扩展属性的表格-->
+                    <table cellpadding="0" cellspacing="0" border="0" id="extend_table"></table>
+                </fieldset>
+            </form>
+            <button class="btn btn-default btn-primary" id="__save__">保存属性</button>
+            <input type="button" class="btn btn-default" id="__reset__" value="重置属性">
+        </div>
+    </div>
+</div>
+</body>
+<script src="./tyCustomerForm.js"></script>
+</html>

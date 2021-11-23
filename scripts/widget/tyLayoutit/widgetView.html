@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>预览表单</title>
+    <link rel="stylesheet" href="/src/tywp.min.css">
+    <script type="text/javascript" src="/src/bower_components/require/require.min.js"></script>
+    <script type="text/javascript" src="/src/scripts/config/require.config.js"></script>
+</head>
+<body style="height: 560px;overflow: auto;">
+    <div class="container-fluid container-full-xl" style="overflow: auto;">
+        <div class="row">
+            <form class="ty-form">
+                <table id="preview_table"></table>
+            </form>
+        </div>
+    </div>
+<script>
+    var $pager,dialogId,inData;
+    require(["jquery","underscore","Ajax","tyUtil","easyModule","tyUI","ueditor"],function ($, _, Ajax, tt, el, ty) {
+        $pager = ty;
+        dialogId  = $.getUrlParam("dialogId");
+        inData = ty.getDataFromIframeDialog(dialogId);
+        $(function () {
+            initForm();
+        });
+        function initForm(){
+            //localStorage.getItem("layoutdata") ? initTable():null;
+            localStorage.getItem("formthisstory") ?renderTable():null;
+        }
+        function initTable() {
+            var container = (JSON.parse(localStorage.getItem("layoutdata"))).list;
+            $("#preview_table").html(container)
+        }
+        function renderTable() {
+            using(["textbox",'numberbox','datebox','datetimebox','timespinner','combobox','combotree','combogrid','combotreegrid'],function () {
+                createTable();
+            })
+        }
+        function createTable() {
+            var columns = Number(localStorage.getItem("column"));
+            var formData = JSON.parse(localStorage.getItem("formthisstory"));
+            var sortLists = packageByColumn(_.sortBy(formData,'attributeNumber'),columns);
+            $.each(sortLists,function (i,item) {
+                var len = item.length;
+                var trTpl ="<tr style='min-height: 45px;'>";
+                for(var m =0; m<len; m++){
+                    var otr = item[m],
+                        labelName = otr.attributeName,
+                        labelHtml = otr.attributeIsRequired =="1" ? "<label><span>*</span>"+labelName+":</label>":"<label><span>&nbsp;</span>"+labelName+":</label>",
+                        eleHtml = createEleByType(otr);
+                    var tdSpan = otr.colspan ? (otr.colspan*2-1) : (len<columns) ? (2*columns-1) : "1";
+                    trTpl += "<td style='vertical-align: top'>"+labelHtml+"</td><td style='padding-bottom: 15px;' colspan="+tdSpan+">"+eleHtml+"</td>";
+                }
+                trTpl += "</tr>";
+                $("#preview_table").append($(trTpl));
+
+            });
+            require(['tyValidateRules'],function (rules) {
+                dyicCreateEle();
+            });
+        }
+        function createEleByType(item) {
+            var component ="",
+                type = item.attributeType,
+                id = item.attributeId,
+                name = item.attributeName;
+                if(type == "textarea"){
+                    item.multiline = true;
+                }
+                var param = escape(JSON.stringify(item));
+            switch (type){
+                case "input":
+                    component = 'textbox';
+                    break;
+                case "number":
+                    component= 'numberspinner';
+                    break;
+                case "date":
+                    component = 'datebox';
+                    break;
+                case "datetime":
+                    component = 'datetimebox';
+                    break;
+                case "time":
+                    component ='timespinner';
+                    break;
+                case "select":
+                    component = 'combobox';
+                    break;
+                case "selecttree":
+                    component = 'combotree';
+                    break;
+                case "textarea":
+                    component = 'textbox';
+                    break;
+                case "editor":
+                    component = 'ue';
+                    break;
+            }
+            return (type == "editor")?"<div  data-role='dync' id="+id+"  data-param="+param+" data-component="+component+" ></div>":"<input type='text' data-role='dync' id="+id+"  name="+name+" data-param="+param+" data-component="+component+" />";
+            
+        }
+
+        /**
+         * 根据列属性分配新的子数组
+         * @param sortLists
+         * @param column
+         * @returns {Array}
+         */
+        function packageByColumn(sortLists,column) {
+            var tepArray = [];
+            var tepColumn = 0;
+            var childArray = null;
+            for(var i = 0; i<sortLists.length; i++){
+                var currentItem = sortLists[i];
+                if(!currentItem.colspan){
+                    if(tepColumn==0){
+                        childArray = [];
+                    }
+                    childArray.push(currentItem);
+                    tepColumn ++;
+                    if(tepColumn == column){
+                        tepArray.push(childArray);
+                        tepColumn = 0;
+                    }else if((i+1) <= sortLists.length && (!sortLists[(i+1)] || sortLists[(i+1)].colspan)){
+                        !sortLists[(i+1)] ? tepArray.push(childArray) : (sortLists[(i+1)] && sortLists[(i+1)].colspan)?tepArray.push(childArray):null;
+                    }else if((i+1) >sortLists.length){
+                        tepArray.push(childArray);
+                    }
+                }else{
+                    childArray =[];
+                    childArray.push(currentItem);
+                    (currentItem.colspan == column) ? tepArray.push(childArray):null;
+                    tepColumn += Number(currentItem.colspan);
+                }
+            }
+            return tepArray;
+        }
+        function dyicCreateEle() {
+            var $eles = $('[data-role="dync"]');
+            $.each($eles,function (i,ele) {
+                var type = $(ele).attr('data-component');
+                renderEleByComponent($(ele),type);
+            })
+        }
+        function renderEleByComponent(ele,type) {
+            var option = ele.attr("data-param") ? JSON.parse(unescape(ele.attr("data-param"))) :null;
+            var queryParams  ={};
+            var rules = [];
+            option.attributeIsRequired == "1" ?queryParams.required = true:null;
+            if(option.attributeRule){
+                rules.push(option.attributeRule);
+            }
+            if(option.maxLength){
+                rules.unshift('maxLength['+Number(option.maxLength)+']');
+            }
+            queryParams.validType = rules;
+            option.attributeIsWrite == "0" ? queryParams.disabled = true:queryParams.disabled = false;
+            switch (type){
+                case "textbox":
+                    if(option.multiline){
+                        queryParams.multiline = true;
+                        queryParams.width = "100%";
+                        queryParams.height = Number(option.maxRow)*20 || 60;
+                    }
+                    ele.textbox(queryParams);
+                    break;
+                case "numberspinner":
+                    queryParams.precision = option.pointLength || 0;
+                    ele.numberbox(queryParams);
+                    break;
+                case "datebox":
+                    option.defaultDate ? queryParams.value = option.defaultDate :null;
+                    ele.datebox(queryParams);
+                    break;
+                case "datetimebox":
+                    option.defaultDate ? queryParams.value = option.defaultDate :null;
+                    ele.datetimebox(queryParams);
+                    break;
+                case "timespinner":
+                    option.defaultDate ? queryParams.value = option.defaultDate :null;
+                    ele.timespinner(queryParams);
+                    break;
+                case "combobox":
+                    Ajax.get({
+                        url:"/platform/common/item/tree/"+option.dicLists+"?t="+(+new Date())
+                    },function (result) {
+                        if (result.success && $.isArray(result.content)) {
+                            queryParams.valueField = "id";
+                            queryParams.textField = "text";
+                        }
+                        queryParams.data = result.content || [];
+                        queryParams.onSelect = function (node) {
+                            //TODO 获取节点对象
+                        }
+                        ele.combobox(queryParams);
+                    })
+                    break;
+                case "combotree":
+                    if(option.dicLists){
+                        Ajax.get({
+                            url:"/platform/common/item/tree/"+option.dicLists+"?t="+(+new Date())
+                        },function (result) {
+                            if(result.success && $.isArray(result.content)){
+                                queryParams.valueField = "id";
+                                queryParams.textField = "text";
+                            }
+                            queryParams.data = result.content || [];
+                            queryParams.onSelect = function(node){
+                                //TODO 获取节点对象
+                            }
+                            ele.combotree(queryParams);
+                        })
+                    }
+                    break;
+                case "ue":
+                    var height = option.maxRow ? Number(option.maxRow): 150;
+                    UE.getEditor(ele.attr("id"),{
+                        serverUrl:inData.serverUrl,
+                        enableAutoSave: false,
+                        autoSyncData: false,
+                        autoHeightEnabled:false,
+                        autoFloatEnabled:false,
+                        toolbars: [[
+                            'source', '|', 'undo', 'redo', '|',
+                            'bold', 'italic', 'underline', 'fontborder', 'strikethrough', 'superscript', 'subscript', 'removeformat', 'formatmatch', 'autotypeset', 'blockquote', 'pasteplain', '|', 'forecolor', 'backcolor', 'insertorderedlist', 'insertunorderedlist', 'selectall', 'cleardoc', '|',
+                            'rowspacingtop', 'rowspacingbottom', 'lineheight', '|',
+                            'justifyleft', 'justifycenter', 'justifyright', 'justifyjustify', '|', 'touppercase', 'tolowercase', '|',
+                            'link', 'unlink', 'anchor', '|', 'imagenone', 'imageleft', 'imageright', 'imagecenter', '|',
+                            'simpleupload','attachment'
+                        ]],
+                        initialFrameWidth: (Number(option.colspan))*235,
+                        initialFrameHeight:height,
+                        elementPathEnabled:false,
+                        wordCount:false,
+                        scaleEnabled:false,
+                        zIndex : 10
+                    });
+                    break;
+            }
+        }
+    })
+</script>
+</body>
+</html>

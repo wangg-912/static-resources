@@ -1,0 +1,97 @@
+/* =======================================================================
+*Index
+* ======================================================================*/
+html, body {
+    height: 100% !important;
+}
+.header-height {
+    height: 60px;
+}
+
+.ty-header-light span.logo {
+    min-width: 45px;
+    height: 45px;
+    margin: 8px 5px 0 10px;
+    background: url(/platform/admin/images/logo/logo_dark.png) no-repeat
+}
+.ty-header-dark span.logo {
+    min-width: 45px;
+    height: 45px;
+    margin: 8px 5px 0 10px;
+    background: url(/platform/admin/images/logo/logo_light.png) no-repeat
+}
+
+.header-title {
+    display: inline-block;
+    margin-bottom: 0;
+    line-height: 58px;
+    font-size: 24px;
+}
+
+.ul-box {
+    width: auto;
+    height: 30px;
+    margin: 18px 5px 0 10px;
+}
+
+.ul-box > li {
+    display: inline-block;
+    list-style: none;
+    font-size: 20px;
+    cursor: pointer;
+    line-height: 30px;
+    margin-right: 7px;
+}
+
+.ul-box > li:hover {
+    transform: scale(1.2, 1.2);
+}
+
+.ty-line {
+    width: 2px;
+    height: 14px;
+    margin: 0 4px;
+    position: relative;
+    opacity: 0.6;
+}
+
+.user-name {
+    line-height: 45px;
+    margin: 10px 5px 0 12px;
+    font-size: 14px;
+}
+
+.head-appear {
+    margin: 5px 10px;
+    cursor: pointer;
+    width: 50px;
+    height: 50px;
+    overflow: hidden;
+    border-radius: 50px;
+    background: #ffffff;
+}
+.ty-header-light .header-background {
+    background: #1890ff url("/platform/admin/images/header/header_right.png") no-repeat right;
+}
+
+.container-fluid {
+    position: relative;
+}
+
+.ty-container {
+    overflow-x: hidden;
+    display: block;
+    position: absolute;
+    left: 0;
+    top: 60px;
+    right: 0;
+    bottom: 0;
+}
+
+.ty-nav-body,
+.ty-layout-center,
+.tab-container {
+    height: 100% !important;
+}
+
+

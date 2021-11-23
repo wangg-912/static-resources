@@ -1,0 +1,237 @@
+/*提示框*/
+.ty-alert-warning-old {
+    width: 32px;
+    height: 32px;
+    overflow: hidden;
+    color: #ffae2b!important;
+    font-size: 20px;
+    text-align: center;
+}
+
+.ty-alert-success {
+    width: 32px;
+    height: 32px;
+    overflow: hidden;
+    color: #39c52b!important;
+    font-size: 20px;
+    text-align: center;
+}
+
+.ty-alert-icon-confirm {
+    width: 32px;
+    height: 32px;
+    overflow: hidden;
+    color: #1890ff!important;
+    background: #ffffff!important;
+    font-size: 20px;
+    text-align: center;
+}
+
+.ty-tips-feedback {
+    width: 320px;
+    min-height: 140px;
+    border-radius: 5px;
+    background: #fff;
+    box-shadow: 0 0 1px 1px #ddd;
+    margin: 0px auto;
+}
+
+.ty-tips-feedback .tips-header {
+    height: 40px;
+    padding-top: 15px;
+    box-sizing: content-box;
+}
+
+.ty-tips-feedback .tips-header span {
+    display: block;
+    float: left;
+}
+
+.ty-tips-feedback .tips-header .tips-icon {
+    width: 24px;
+    height: 24px;
+    border-radius: 15px;
+    margin: 3px 6px 3px 15px;
+    line-height: 24px;
+}
+
+.ty-tips-feedback .tips-header .tips-title {
+    width: auto;
+    height: 30px;
+    line-height: 30px;
+    font-size: 14px;
+    color: #333;
+    font-weight: 600;
+}
+
+.ty-tips-feedback .tips-body {
+    width: 235px;
+    height: auto;
+    margin: 0px auto 0px;
+    position: relative;
+
+}
+
+.ty-tips-feedback .tips-body .tips-message {
+    font-size: 14px;
+    font-weight: 100;
+    line-height: 24px;
+    font-size: 14px;
+    color: #8d8d8d;
+    text-align: left;
+    padding-bottom: 40px;
+}
+
+.ty-tips-feedback .tips-body .tips-foot {
+    height: 40px;
+    position: absolute;
+    right: -20px;
+    bottom: 10px;
+}
+
+.ty-tips-feedback .tips-body .tips-foot .close {
+    border: 0;
+    background: #1890ff;
+    border-radius: 3px;
+    font-size: 14px;
+    color: #fff;
+    height: 30px;
+    line-height: 30px;
+    margin-top: 10px;
+    float: right;
+    padding: 0 15px;
+    opacity: 1;
+    text-shadow: none;
+}
+
+/*提示框*/
+.ty-alert-old {
+    width: 280px;
+    height: 120px;
+    overflow: hidden;
+    background: #fff;
+    margin: 0px auto;
+    border-radius: 5px;
+    position: relative;
+    text-align: left;
+}
+
+.ty-alert-old .ty-alert-header {
+    width: 100%;
+    height: 30px;
+    overflow: hidden;
+    background: #1890ff;
+}
+
+.ty-alert-old .ty-alert-header .ty-alert-header-title {
+    display: block;
+    float: left;
+    width: 60px;
+    height: 30px;
+    padding-left: 10px;
+    font-size: 14px;
+    color: #fff;
+    line-height: 30px;
+    text-align: left;
+}
+
+.ty-alert-old .ty-alert-header .ty-alert-header-close {
+    display: block;
+    float: right;
+    width: 20px;
+    height: 20px;
+    padding: 9px 0px;
+    color: #fff;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.ty-alert-old .ty-alert-body {
+    width: 226px;
+    height: 60px;
+    margin: 15px auto;
+}
+
+.ty-alert-old .ty-alert-body .ty-alert-body-icon {
+    width: 32px;
+    height: 32px;
+    display: block;
+    float: left;
+    overflow: hidden;
+    font-size: 30px;
+    line-height: 32px;
+    margin-right: 10px;
+    padding: 0;
+    border-radius: 32px;
+}
+
+.ty-alert-old .ty-alert-body .ty-alert-body-message {
+    font-size: 14px;
+    color: #333;
+    width: 172px;
+    display: block;
+    float: left;
+    line-height: 24px;
+    height: 50px;
+    margin-top: 0;
+    word-break: break-all;
+}
+
+.ty-alert-old .ty-alert-footer {
+    width: auto;
+    height: 40px;
+    overflow: hidden;
+    position: absolute;
+    bottom: 0;
+    right: 35px;
+    text-align: right;
+}
+
+.ty-alert-old .ty-alert-footer .ty-alert-button {
+    width: auto;
+    height: 28px;
+    overflow: hidden;
+    padding: 2px 15px;
+    display: block;
+    float: left;
+    border: 1px solid #efefef;
+    border-radius: 5px;
+    margin-top: 4px;
+}
+
+.ty-alert-old .ty-alert-footer .button-yes {
+    margin-right: 15px;
+}
+
+.ty-confirm {
+    height: 140px;
+}
+.ty-confirm.bigger{
+    width: 340px;
+    height: auto;
+}
+.ty-confirm .ty-alert-header {
+    height: 36px;
+}
+
+.ty-confirm .ty-alert-header .ty-alert-header-title {
+    height: 36px;
+    padding-left: 10px;
+    line-height: 36px;
+}
+.ty-confirm.bigger .ty-alert-body{
+    min-height: 60px;
+    width: 260px;
+    height: auto;
+}
+.ty-confirm.bigger .ty-alert-body .ty-alert-body-message{
+    min-height: 50px;
+    width: 210px;
+    height: auto;
+    margin-bottom: 40px;
+}
+
+/*弹框样式调整*/
+.blue,.ty-alert-old .l-btn-primary{background-color: #1890ff}
+.red{background-color: red;}
+.ty-alert-old #confirm_cancel{color:#000;}

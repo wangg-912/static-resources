@@ -1,0 +1,935 @@
+
+label {
+    margin: 0;
+    font-weight: 400;
+}
+
+input[type='radio'] + label,
+input[type='checkbox'] + label {
+    position: relative;
+    top: -3px;
+    top: 0px \9 !important;
+}
+
+_:-ms-fullscreen,
+:root input[type='radio'] + label,
+:root input[type='checkbox'] + label {
+    top: 0px;
+}
+
+input[type="radio"],
+input[type="checkbox"] {
+    margin-top: 0;
+}
+
+/*grid行内编辑数字框必填不是红色边框*/
+.datagrid-editable .textbox-invalid {
+    border-color: #ffa8a8;
+}
+
+/**
+* 字体icon
+ */
+.glyphicon {
+    padding-right: 6px !important;
+}
+
+/*
+* 提示框之类的Styles
+*/
+.container-fluid {
+    padding-right: 0px !important;
+    padding-left: 0px !important;
+    height: inherit;
+}
+
+.row {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+}
+
+.btn-default:hover,
+.btn-default:focus {
+    color: #40a9ff;
+    background-color: #fff;
+    border-color: #40a9ff;
+}
+
+/*linkbuttom*/
+.l-btn-icon {
+    font-family: iconfont !important;
+    background: none !important;
+    font-size: 14px;
+}
+
+/*datagrid工具栏按钮样式*/
+.l-btn-plain {
+    color: #333;
+    background-color: #fff;
+    border: 1px #ccc solid;
+    /*height: 24px;*/
+    margin: 2px 6px 0 0;
+    padding: 0;
+}
+
+.l-btn-plain .l-btn-text {
+    line-height: 24px;
+}
+
+.l-btn-plain .l-btn-text {
+    line-height: 26px;
+}
+
+.l-btn-plain:hover, .l-btn-plain:focus {
+    color: #409eff;
+    border-color: #c6e2ff;
+    background-color: #ecf5ff;
+    margin: 2px 6px 0 0;
+    padding: 0;
+}
+
+.l-btn-plain:active, .dialog-button .l-btn:active {
+    color: #3a8ee6;
+    border-color: #3a8ee6;
+    outline: none;
+}
+
+.dialog-button .l-btn:hover:not(".btn-primary"), .dialog-button .l-btn:focus {
+    color: #409eff;
+    border-color: #c6e2ff;
+    background-color: #ecf5ff;
+}
+
+.l-btn-plain.l-btn-plain-selected{
+    color: #3a8ee6;
+}
+
+/*end datagrid工具栏按钮样式*/
+.btn-primary,
+.btn-primary:hover,
+.btn-primary:focus {
+    color: #fff;
+    background-color: #1890ff;
+    border-color: #1890ff;
+}
+
+.btn-danger {
+    color: #f5222d;
+    background-color: #f5f5f5;
+    border-color: #d9d9d9;
+}
+
+.btn-danger:hover,
+.btn-danger:focus {
+    color: #fff;
+    background-color: #f5222d;
+    border-color: #f5222d;
+}
+
+.btn-warning {
+    color: #f0ad4e;
+    background-color: #ffffff;
+    border-color: #eea236;
+}
+
+.btn-warning:hover,
+.btn-warning:focus {
+    color: #fff;
+    background-color: #f0ad4e;
+    border-color: #eea236;
+}
+
+.btn-primary:after, .btn-danger:after, .btn-warning:after {
+    background-image: radial-gradient(circle, #ffffff 10%, transparent 10.01%);
+}
+/*主题换色*/
+/* dark黑色 */
+.window .window-header.window-dark {
+    background: #02386a;
+}
+/* green绿色 */
+.window .window-header.window-green {
+    background: #11A983;
+}
+/* purple紫色 */
+.window .window-header.window-purple {
+    background: #6959CD;
+}
+/* red红色 */
+.window .window-header.window-red {
+    background: #F5222D;
+}
+
+/* dark黑色 */
+.button-dark .btn-primary,.button-dark .btn-primary:hover,
+.button-dark .btn-primary:focus{
+    color: #fff;
+    background-color: #02386a;
+    border-color: #02386a;
+}
+/* green绿色 */
+.button-green .btn-primary,.button-green .btn-primary:hover,
+.button-green .btn-primary:focus{
+    color: #fff;
+    background-color: #11A983;
+    border-color: #11A983;
+}
+/* purple紫色 */
+.button-purple .btn-primary,.button-purple .btn-primary:hover,
+.button-purple .btn-primary:focus{
+    color: #fff;
+    background-color: #6959CD;
+    border-color: #6959CD;
+}
+/* red红色 */
+.button-red .btn-primary,.button-red .btn-primary:hover,
+.button-red .btn-primary:focus{
+    color: #fff;
+    background-color: #F5222D;
+    border-color: #F5222D;
+}
+
+
+.form-control {
+    height: 28px;
+    padding: 4px 10px;
+}
+
+.window {
+    padding: 0;
+    border-width: 0;
+    background-color: #1890ff;
+    border-color: transparent;
+    box-shadow: 0 0 20px 0 darkgray;
+}
+
+.window-body {
+    overflow: hidden;
+}
+
+.window-mask {
+    background: transparent;
+}
+
+.window .window-header, .window .window-header.window-dark {
+    padding: 12px 8px;
+}
+
+
+
+.window .window-header .panel-tool {
+    right: 7px;
+}
+
+/*.panel-body{
+    padding: 0!important;
+}*/
+.ty-dialog-title {
+    font-style: normal;
+    color: #ffffff;
+}
+
+.layout .panel-title {
+    color: rgba(0, 0, 0, 0.85);
+}
+
+.dialog-button {
+    border-width: 0;
+    top: 0;
+}
+
+.dialog-button .l-btn {
+    margin-right: 10px;
+}
+.dialog-button .l-btn[disabled="disabled"]{
+    background: #f4f4f5;
+    color: #bcbec2;
+    border-color: #e9e9eb;
+}
+
+.dialog-button .l-btn .l-btn-text {
+    margin: 0 15px !important;
+}
+
+.datagrid-toolbar {
+    background: transparent !important;
+    padding: 1px 2px 0 !important;
+}
+
+.datagrid-toolbar, .grid-toolbar {
+    min-height: 42px;
+    line-height: 41px;
+}
+
+.grid-toolbar a.easyui-linkbutton:first-child {
+    margin-left: 0;
+    padding-left: 0;
+}
+
+.grid-toolbar .searchbox {
+    margin-left: 0px;
+    height: 30px !important;
+}
+
+.alone .searchbox {
+    margin-left: 8px;
+}
+
+.datagrid-wrap.panel-body.panel-body-noheader {
+    border-color: transparent;
+    border-top-width: 0;
+}
+
+.searchbox-button {
+    background: none;
+    opacity: 1;
+    color: #000;
+}
+
+.searchbox-button:hover {
+    color: #1890ff;
+}
+
+.searchbox-button:before {
+    font-family: iconfont;
+    width: 18px;
+    height: 18px;
+    content: "\e627";
+    position: relative;
+    top: -2px;
+    left: 1px;
+    font-size: 16px;
+}
+
+.combo-multiple .combobox-item {
+    background-image: url("./images/uncheck.png");
+}
+
+.combo-multiple .combobox-item.combobox-item-selected {
+    background-image: url("./images/checked.png");
+}
+
+.combo-multiple .combobox-item, .combo-multiple .combobox-item.combobox-item-selected {
+    background-repeat: no-repeat;
+    background-position: 93% center;
+}
+
+.datagrid-header-check input, .datagrid-cell-check input {
+    width: 18px;
+    height: 18px;
+    padding: 0 !important;
+    width: 16px \0 !important;
+    height: 16px \0 !important;
+    margin-top: 8px \0 !important;
+}
+
+@charset "<Any Modern Browser but MSIE 10- or FF 18- >";
+_:-ms-lang(x), input[type=radio] {
+    /*width: 16px!important;
+    height: 16px!important;*/
+    overflow: hidden;
+    margin-top: 8px;
+}
+
+_:-ms-lang(x),
+_:-webkit-full-screen,
+input[type=checkbox] {
+    width: auto !important;
+    padding: 8px \9 !important;
+    position: relative;
+    overflow: hidden;
+    margin-top: 8px;
+}
+
+_:-ms-lang(x),
+_:-webkit-full-screen,
+.datagrid-cell-check input[type=checkbox] {
+    margin-top: 0px;
+}
+
+/*选项卡*/
+.tabs li a.tabs-inner {
+    padding: 0 15px;
+}
+
+.tabs li a.tabs-close {
+    font-size: 12px !important;
+}
+
+/*分页*/
+.pagination-first, .pagination-prev, .pagination-next, .pagination-last, .pagination-load {
+    background: none !important;
+    width: 24px;
+    height: 24px;
+    top: 1px;
+    left: 0px !important;
+    margin: 0;
+    line-height: 24px;
+    font-size: 24px !important;
+    color: #1890ff;
+}
+
+.pagination-first:before {
+    content: "\e6f5";
+}
+
+.pagination-prev:before {
+    content: "\e6f6";
+}
+
+.pagination-next:before {
+    content: "\e6f7";
+}
+
+.pagination-last:before {
+    content: "\e6f8";
+}
+
+.pagination-load:before {
+    content: "\e6f9";
+    font-size: 20px !important;
+    position: relative;
+    left: 4px;
+}
+
+/*.pagination-info {*/
+/*line-height: 40px;*/
+/*}*/
+
+.datagrid-pager .pagination .l-btn-left {
+    width: 24px !important;
+    height: 24px !important;
+    overflow: hidden;
+}
+
+.tabs-header, .tabs, .tabs-panels {
+    border-color: transparent;
+    background: transparent;
+}
+
+.tabs li a.tabs-inner {
+    height: inherit;
+    /*box-shadow: 2px 0px 2px #f1f2f3, -2px 0px 8px #f1f2f3;*/
+    line-height: 46px;
+}
+
+.tabs-header {
+    box-shadow: -3px 2px 8px #cfcfd1;
+    height: 46px;
+    overflow: hidden;
+}
+
+.tabs {
+    height: 46px;
+}
+
+.tabs-header li {
+    height: 46px;
+    margin: 0 8px 0 0;
+}
+
+.tabs-header-left .tabs li {
+    margin: 0 0 4px 0;
+    border-bottom: 1px solid #cfcfd1;
+}
+
+.tabs li.tabs-selected a.tabs-inner {
+    height: 44px;
+    color: #1890ff;
+    border-bottom: 2px solid #1890ff;
+}
+
+.tabs li a.tabs-close, .tabs li a:hover.tabs-close {
+    right: 5px;
+    background: none !important;
+    margin-top: -6px;
+}
+
+.tabs li a.tabs-close {
+    display: none;
+}
+
+.tabs li:hover a.tabs-close {
+    display: block;
+}
+
+.tabs-header-left .tabs li a.tabs-close, .tabs-header-left .tabs li a:hover.tabs-close {
+    right: 10px;
+}
+
+.tabs li a.tabs-close:before {
+    font-family: iconfont;
+    content: "\e6bd";
+    font-weight: 700;
+}
+
+.tabs li a:hover.tabs-close:before {
+    color: red !important;
+}
+
+.tabs-header-left .tabs li.tabs-selected a.tabs-inner {
+    color: #1890ff;
+    border-right: 2px solid #1890ff;
+}
+
+.tabs-scroller-left, .tabs-scroller-right {
+    background: none;
+    font-family: iconfont;
+}
+
+.tabs-scroller-left:before, .tabs-scroller-right:before {
+    display: block;
+    padding-top: 10px;
+    text-align: center;
+}
+
+.tabs-scroller-left:before {
+    content: "\e6ec";
+}
+
+.tabs-scroller-right:before {
+    content: "\e6ed";
+}
+
+.messager-body {
+    padding: 15px 20px 15px 20px;
+}
+
+.messager-icon {
+    font-family: "iconfont" !important;
+    font-size: 32px;
+    font-style: normal;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    line-height: 1;
+}
+
+.messager-warning, .messager-ok, .messager-error, .messager-question, .panel-tool-close, .panel-tool:hover {
+    background: none;
+}
+
+.messager-ok:before {
+    color: #3c763d;
+    content: "\e68d";
+}
+
+.messager-error:before {
+    color: rgba(206, 0, 0, 0.95);
+    content: "\e696";
+}
+
+.messager-warning:before {
+    color: #ffc80a;
+    content: "\e68a";
+}
+
+.messager-question:before {
+    color: #1890ff;
+    content: "\e695";
+}
+
+.panel-tool-close:before {
+    background: transparent;
+    font-family: iconfont;
+    border-radius: 16px;
+    color: #ebebeb;
+    content: '\e63d';
+}
+
+a.panel-tool-close:hover {
+    background: transparent;
+    color: #1890ff;
+}
+
+.window .window-header .panel-icon {
+    left: 8px;
+}
+
+.window .window-header .panel-icon {
+    margin-top: -7px;
+}
+
+.datagrid-header .datagrid-cell {
+    color: rgba(0, 0, 0, 0.85);
+    font-weight: 700;
+}
+
+.datagrid-row-over, .datagrid-row-over .datagrid-td-rownumber, .datagrid-td-rownumber:hover {
+    background: #e6f7ff;
+}
+
+.datagrid-header td.datagrid-header-over {
+    background: none;
+    color: rgba(0, 0, 0, 0.85);
+    cursor: default;
+}
+
+.datagrid-header-row, .datagrid-row, .datalist .datagrid-group {
+    height: 40px;
+}
+
+.datagrid-header-row, .datalist .datagrid-group {
+    background: #fafafa;
+    color: rgba(0, 0, 0, 0.85);
+}
+
+.datalist .datagrid-group-title {
+    line-height: 40px;
+}
+
+.datagrid-cell,
+.datagrid-cell-group {
+    padding: 0 10px;
+    color: rgba(0, 0, 0, 0.65);
+}
+
+.datagrid-header td, .datagrid-body td, .datagrid-footer td {
+    border-color: #e8e8e8;
+    border-left-color: transparent;
+    border-right-color: transparent;
+}
+
+.datagrid-header-check, .datagrid-cell-check {
+    padding: 0;
+    width: 32px;
+    height: 32px;
+    font-size: 1px;
+    text-align: center;
+    overflow: hidden;
+    position: relative;
+}
+
+.datagrid-header-check input, .datagrid-cell-check input {
+    width: 32px;
+    height: 32px;
+    padding: 0px !important;
+    text-align: center;
+    line-height: 32px;
+}
+
+.datagrid-header-row .datagrid-cell-group {
+    color: rgba(0, 0, 0, 0.85);
+    font-weight: 700;
+}
+
+.btn {
+    outline: none;
+    text-transform: none;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    padding: 4px 10px;
+    margin: 4px;
+    font-size: 14px;
+    height: 28px;
+}
+
+.btn i {
+    position: relative;
+    left: -4px;
+    line-height: 1.25;
+    font-size: 14px;
+}
+
+.btn:focus,
+.btn:active:focus,
+.btn.active:focus,
+.btn.focus,
+.btn:active.focus,
+.btn.active.focus {
+    outline: none;
+    text-decoration: none;
+}
+
+.btn:hover,
+.btn:focus,
+.btn.focus {
+    outline: none;
+}
+
+.btn:active,
+.btn.active {
+    background-image: none;
+    outline: 0;
+    outline: none;
+    text-decoration: none;
+    -webkit-box-shadow: inset 0 3px 5px rgba(0, 0, 0, .125);
+    box-shadow: inset 0 3px 5px rgba(0, 0, 0, .125);
+}
+
+.datagrid-toolbar .btn-sm {
+    line-height: 1;
+    height: 27px;
+}
+
+.datagrid-toolbar .btn-sm i {
+    font-size: 14px;
+    position: relative;
+    left: -6px;
+}
+
+.l-btn {
+    text-transform: none;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    outline: none;
+    text-decoration: none;
+}
+
+.l-btn:after {
+    content: "";
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    background-image: radial-gradient(circle, #666 10%, transparent 10.01%);
+    background-repeat: no-repeat;
+    background-position: 50%;
+    transform: scale(10, 10);
+    opacity: 0;
+    transition: transform .65s, opacity .5s;
+}
+
+.l-btn:active:after {
+    transform: scale(0, 0);
+    opacity: .3;
+    transition: 0s;
+}
+
+/*easyui tagbox样式受到bootstrap样式影响，再此更正*/
+.tagbox-remove:hover {
+    margin-top: -8px;
+}
+
+.pagination-num {
+    height: 22px !important;
+    line-height: 20 px\0 \9 !important;
+}
+
+/**/
+
+/*Form*/
+/*用于筛选框的工具条*/
+form.ty-toolbar table {
+    margin-top: 0 !important;
+}
+
+form.ty-toolbar table td:nth-child(odd) {
+    padding-left: 25px;
+    text-align: right;
+}
+
+form.ty-toolbar table td:first-child {
+    padding-left: 4px;
+}
+
+form.ty-toolbar table td .searchbox {
+    margin-left: 15px !important;
+}
+
+/*用于form嵌套table的场景*/
+form.ty-form table {
+    margin-top: 20px !important;
+}
+
+form.ty-form table tr, form.ty-toolbar table tr {
+    height: 42px;
+    overflow: hidden;
+}
+
+form.ty-form table td:nth-child(odd) {
+    padding-left: 35px;
+    text-align: right;
+}
+
+form.ty-form table td:nth-child(odd) label, form.ty-toolbar table td:nth-child(odd) label {
+    font-size: 14px;
+    font-weight: 400;
+
+}
+
+form.ty-form table td:nth-child(odd) label span, form.ty-toolbar table td:nth-child(odd) label span {
+    color: red;
+}
+
+form.ty-form table td:nth-child(even), form.ty-toolbar table td:nth-child(even) {
+    padding-left: 15px;
+    text-align: left;
+    position: relative;
+    top: 0;
+}
+
+form.ty-form table td:nth-child(even) div.ty-choice, form.ty-toolbar table td:nth-child(even) div.ty-choice {
+    position: relative;
+    top: 0;
+}
+
+form.ty-form table td .searchbox {
+    margin-left: 0 !important;
+}
+
+.datagrid-toolbar table.grid-toolbar, .datagrid-header table, .datagrid-body table {
+    margin-top: 0 !important;
+}
+
+.datagrid-toolbar form:not(.ty-form,.ty-toolbar) table.grid-toolbar td, .datagrid-header table td:nth-child(n), .datagrid-body table td {
+    padding-left: 8px !important;
+    vertical-align: inherit;
+}
+
+.layout-split-east {
+    border-left: 1px solid;
+    border-image: -webkit-linear-gradient(270deg, #cfcfd1, #fff) 49% 100%;
+    border-image: -moz-linear-gradient(270deg, #cfcfd1, #fff) 49% 100%;
+    border-image: -ms-linear-gradient(270deg, #cfcfd1, #fff) 49% 100%;
+    border-image: -o-linear-gradient(270deg, #cfcfd1, #fff) 49% 100%;
+    border-image: linear-gradient(270deg, #cfcfd1, #fff) 49% 100%;
+}
+
+.editor-z-index {
+    z-index: 98 !important;
+}
+
+
+
+/*switchbutton*/
+.switchbutton {
+    border-radius: 20px;
+}
+
+.switchbutton-handle {
+    background: #fff;
+    border-radius: 14px;
+}
+
+.switchbutton-on {
+    background: #1890ff;
+    color: #fff;
+}
+
+/*easyui datagrid分页器样式改成elementui pagination样式*/
+.pagination {
+    background: #fff;
+}
+
+.pagination .pagination-info{
+    width: 80%;
+    text-align: center;
+}
+
+.pagination .pagination-page-list{
+    width: 80%;
+    text-align: center;
+    border-radius: 3px;
+    border: 1px solid #dcdfe6;
+    outline: none;
+    height: 28px;
+    cursor:pointer;
+    transition: border-color .2s cubic-bezier(.645,.045,.355,1);
+}
+
+.pagination .pagination-page-list:hover{
+    border:1px #409eff solid;
+}
+
+.pagination a{
+    /*color: #303133;*/
+    font-weight: bold;
+    border:1px #fff solid !important;
+    background: #fff !important;
+    cursor:pointer !important;
+}
+
+.pagination a:hover{
+    background: none;
+    border:1px #fff solid;
+}
+
+.pagination .pagination-prev{
+    color: #303133;
+    border:1px #fff solid;
+    cursor:pointer;
+}
+
+.pagination .pagination-prev:hover{
+    color: #409eff;
+}
+
+.pagination .pagination-next{
+    color: #303133;
+    border:1px #fff solid;
+    cursor:pointer;
+}
+
+.pagination .pagination-next:hover{
+    color: #409eff;
+}
+
+.pagination .l-btn-disabled .l-btn-icon:not(".btn-primary"):hover{
+    color: #404040 !important;
+    cursor:not-allowed !important;
+}
+
+.pagination .pagination-num{
+    cursor:pointer;
+    height: 28px !important;
+    border-radius: 4px !important;
+    border: 1px solid #dcdfe6 !important;
+    color: #606266 !important;
+}
+
+.pagination .pagination-num:hover{
+    border: 1px solid #409eff !important;
+}
+
+.pagination td:nth-child(1){
+    min-width: 70px ;
+}
+
+.pagination td:nth-child(2){
+    min-width: 70px;
+}
+
+/*
+* elementui所有类型输入框的宽度
+*/
+.el-input.el-input--small{
+    width: 180px;
+}
+
+.el-input-number .el-input.el-input--small{
+    width:130px;
+}
+
+.el-date-range-picker__editor.el-input.el-input--small{
+    width: 140px;
+}
+
+.el-range-editor.el-date-editor--daterange.el-range-editor--small{
+    width: 280px;
+}
+
+.el-range-editor.el-date-editor--datetimerange.el-range-editor--small{
+    width: 330px;
+}
+
+.el-range-editor.el-range-editor--small .el-range-input{
+    width: 45%;
+}
+
+.el-range-editor.el-range-editor--small .el-range-separator{
+    width: 10%;
+}
+
+/*重载menu菜单的父节点在IE浏览器上聚焦时的样式*/
+.el-submenu__title:focus{
+    background-color: transparent !important;
+}
+
+button{
+    overflow: hidden!important;
+}

@@ -1,0 +1,14 @@
+html,body{
+    height: 100%;
+}
+.chart-bord{
+    border: 1px solid #1890ff;
+    border-radius: 4px;
+}
+.line-chart,
+.bar-chart,
+.pie-chart,
+.gauge-chart,
+.adar-chart{
+    background: red;
+}
