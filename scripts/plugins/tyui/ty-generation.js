@@ -3,7 +3,7 @@
  * @version 1.0
  * @description 功能调用方法接口
  */
-define(["tyBase", "tyUtil", "tyDialog", "https://cdn.jsdelivr.net/gh/wangg-912/static-resources/scripts/plugins/js/throttle.js"], function (tB, util, dialog) {
+define(["tyBase", "tyUtil", "tyDialog", "scripts/plugins/js/throttle.js"], function (tB, util, dialog) {
     var iframePopupTemplate_func = _.template("<iframe id=\"<%=iframeId %>\" name=\"<%=iframeId %>\" src=\"<%=src %>\" style=\"width:<%=width %>;height:<%=height %>;position:<%=position %>;top:<%=top %>;left:<%=left %>;border:<%=border %>;z-index:<%=zindex %>;visibility:<%=visibility %>;background-color: transparent;\"  allowtransparency=\"true\" frameBorder=\"0\" scrolling=\"no\"></iframe>");
     var ty = {
         //================================
